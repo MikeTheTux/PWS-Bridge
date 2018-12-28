@@ -10,6 +10,7 @@ Required Packages:
 - request
 - express
 - normalize-port
+- sprintf
 
 References:
 - https://www.openhab.org/
