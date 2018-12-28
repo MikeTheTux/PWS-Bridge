@@ -11,6 +11,7 @@ Required Packages:
 - express
 - normalize-port
 
-https://www.openhab.org/
-https://www.froggit.de/product_info.php?info=p233_funk-internet-wetterstation-wh2600-se--second-edition-2018--lan-windmessung-regen-wettermast.html
-rtupdate.wunderground.com
+References:
+- https://www.openhab.org/
+- https://www.froggit.de/product_info.php?info=p233_funk-internet-wetterstation-wh2600-se--second-edition-2018--lan-windmessung-regen-wettermast.html
+- https://rtupdate.wunderground.com
