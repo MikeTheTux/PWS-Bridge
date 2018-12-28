@@ -1,0 +1,20 @@
+[Unit]
+Description=PWS Bridge 
+Documentation=https://github.com/MikeTheTux/pws_bridge
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /srv/openhab2-conf/scripts/pws_bridge.js
+WorkingDirectory=/srv/openhab2-conf/scripts
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog 
+SyslogIdentifier=pws_bridge
+User=openhab
+Group=openhab
+Environment=NODE_ENV=production PORT=3001
+
+[Install]
+WantedBy=multi-user.target
+
