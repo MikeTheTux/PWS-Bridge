@@ -26,12 +26,17 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
 - Copy it to /lib/systemd/system/
 - Run systemctl daemon-reload to refresh services
 - Enable the service
+- Start the service
+- Check the service
 
 ```
 cp pws_bridge.service /lib/systemd/system/
 systemctl daemon-reload
 systemctl enable pws_bridge.service
+systemctl start pws_bridge.service
+systemctl status pws_bridge.service
 ```
+
 ### Alternative: Start within openHAB2
 ```
 var boolean reloadOnce = true
