@@ -12,28 +12,23 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
 - normalize-port
 - sprintf
 
+```
+ sudo npm install -g normalize-port --save
+ sudo npm link normalize-port
+```
+
 # References:
 - https://www.openhab.org/
 - https://www.froggit.de/product_info.php?info=p233_funk-internet-wetterstation-wh2600-se--second-edition-2018--lan-windmessung-regen-wettermast.html
 - https://rtupdate.wunderground.com
 
 # Setup as systemctl service
-
-Copy it to /lib/systemd/system/
+- Copy it to /lib/systemd/system/
+- Run systemctl daemon-reload to refresh services
+- Enable the service
 
 ```
 cp pws_bridge.service /lib/systemd/system/
-```
-
-Run systemctl daemon-reload to refresh services:
-
-```
 systemctl daemon-reload
-```
-
-Enable the service
-
-```
 systemctl enable pws_bridge.service
 ```
-
