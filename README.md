@@ -1,12 +1,12 @@
 # PWS-Bridge
 OpenHAB2 Bridge for Weather Underground (WU) Updater
 
-# Tested with
+## Tested with
 - node.js, v8.13.0
 - openHAB v2.4.0.M6
 - Froggit WH2600 SE, Firmware v2.2.5
 
-# Required Packages
+## Required Packages
 - request
 - express
 - normalize-port
@@ -17,12 +17,12 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
  sudo npm link normalize-port
 ```
 
-# References
+## References
 - https://www.openhab.org/
 - https://www.froggit.de/product_info.php?info=p233_funk-internet-wetterstation-wh2600-se--second-edition-2018--lan-windmessung-regen-wettermast.html
 - https://rtupdate.wunderground.com
 
-# Setup as systemctl service
+## Setup as systemctl service
 - Copy it to /lib/systemd/system/
 - Run systemctl daemon-reload to refresh services
 - Enable the service
@@ -32,8 +32,24 @@ cp pws_bridge.service /lib/systemd/system/
 systemctl daemon-reload
 systemctl enable pws_bridge.service
 ```
+### Alternative: Start within openHAB2
+```
+var boolean reloadOnce = true
 
-# Sample openHAB2 Items
+rule "Start pws_bridge"
+when
+    System started
+then
+    if ( reloadOnce == true )
+    {
+        executeCommandLine("node@@/srv/openhab2-conf/scripts/pws_bridge.js")
+    }
+   reloadOnce = false
+  ;
+end
+```
+
+## Sample openHAB2 Items
 ```
 Number:Temperature      WH2600_Temperature          "Temperature [%.1f %unit%]"         <temperature> 
 Number:Dimensionless    WH2600_Humidity             "Humidity [%d %%]"                  <humidity>    
