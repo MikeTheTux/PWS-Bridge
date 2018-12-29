@@ -1,6 +1,7 @@
 const express = require('express');
 const request = require('request');
 const normalizePort = require('normalize-port');
+var sprintf = require('sprintf').sprintf;
 
 const port          = normalizePort(process.env.PORT || 3001);
 const openHABserver = "http://127.0.0.1:8080/rest/items/";
@@ -31,9 +32,9 @@ app.get(PWSURI, (req, response) => {
             if ( tempf>=80.0 ) {
                var heatindex = -42.379 + 2.04901523*tempf + 10.14333127*humidity - 0.22475541*tempf*humidity - 0.00683783*tempf*tempf - 0.05481717*humidity*humidity + 0.00122874*tempf*tempf*humidity + 0.00085282*tempf*humidity*humidity - 0.00000199*tempf*tempf*humidity*humidity;
 
-               if ( humidity <= 13.0 && tempf >= 80.0 && tempf <= 112.0) {
+               if ( (humidity <= 13.0) && (tempf >= 80.0) && (tempf <= 112.0) ) {
                   heatindex -= ((13.0 - humidity)/4.0) * (Math.sqrt(17.0-Math.abs(tempf-95.0)/17.0));
-               } else if (humidity >= 85.0 && tempf >= 80.0 && tempf <= 87.0) {
+               } else if ( (humidity >= 85.0) && (tempf >= 80.0) && (tempf <= 87.0) )  {
                   heatindex += ((humidity - 85.0)/10.0)*((87.0-tempf)/5.0);
                }
             }
@@ -44,8 +45,13 @@ app.get(PWSURI, (req, response) => {
          }
 
          var date = new Date(req.query.dateutc + " UTC");
-         date.setHours(date.getHours()+1);
-         
+         const timezoneOffset = date.getTimezoneOffset();                                                                     // "-60min"
+         date.setMinutes(date.getMinutes()-timezoneOffset);
+         const timezoneOffsetMinutes = Math.abs(timezoneOffset) % 60;                                                         // "   00"
+         const timezoneOffsetHours   = Math.abs(timezoneOffset) / 60;                                                         // " 00  " 
+         const timeZone = sprintf("%s%02d%02d", (timezoneOffset<=0) ? "+" : "-", timezoneOffsetHours, timezoneOffsetMinutes); // "+0100"
+         const localDate = date.toJSON().replace("Z", timeZone);
+
          // Unit conversion is done within openHAB using QuantityType
          const WH2600 = [
             ["WH2600_Temperature", req.query.tempf, "°F"],
@@ -68,7 +74,7 @@ app.get(PWSURI, (req, response) => {
             ["WH2600_Pressure", req.query.baromin],
             ["WH2600_LowBat", (req.query.lowbatt=="0") ? "OFF":"ON"],
             ["WH2600_SoftwareType", req.query.softwaretype],
-            ["WH2600_Date", date.toJSON().replace("Z", "+0100")],
+            ["WH2600_Date", localDate],
             ["WH2600_Action", req.query.action],
             ["WH2600_RealTime", (req.query.realtime=="0") ? "OFF":"ON"],
             ["WH2600_RTFreq", req.query.rtfreq],
