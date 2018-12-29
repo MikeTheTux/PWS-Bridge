@@ -66,11 +66,11 @@ Number:Temperature      WH2600_HeatIndex            "Heat Index [%.1f %unit%]"  
 Number:Angle            WH2600_WindDirection2       "Wind direction [%.0f %unit%]"      <wind>        
 Number:Speed            WH2600_WindSpeed            "Wind speed [%.1f %unit%]"          <wind>        
 Number:Speed            WH2600_WindGust             "Wind gust [%.1f %unit%]"           <wind>        
-Number:Length           WH2600_RainH                "Rain H [%.1f %unit%]"              <rain>        
-Number:Length           WH2600_RainD                "Rain D [%.1f %unit%/h]"            <rain>        
-Number:Length           WH2600_RainW                "Rain W [%.1f %unit%/h]"            <rain>        
-Number:Length           WH2600_RainM                "Rain M [%.1f %unit%/h]"            <rain>        
-Number:Length           WH2600_RainY                "Rain Y [%.1f %unit%/h]"            <rain>        
+Number:Length           WH2600_RainH                "Rain H [%.1f mm]"                  <rain>        
+Number:Length           WH2600_RainD                "Rain D [%.1f mm]"                  <rain>        
+Number:Length           WH2600_RainW                "Rain W [%.1f mm]"                  <rain>        
+Number:Length           WH2600_RainM                "Rain M [%.1f mm]"                  <rain>        
+Number:Length           WH2600_RainY                "Rain Y [%.1f mm]"                  <rain>        
 Number:Intensity        WH2600_SolarRadiation       "Solar Radiation [%.2f %unit%]"                   
 Number                  WH2600_UV                   "UV Index [%.1f]"                                 
 Number:Pressure         WH2600_Pressure             "Pressure [%.0f %unit%]"                          
