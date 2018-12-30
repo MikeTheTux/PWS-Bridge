@@ -63,7 +63,7 @@ Number:Dimensionless    WH2600_Indoor_Humidity      "Indoor Humidity [%d %%]"   
 Number:Temperature      WH2600_DewPoint             "Dew Point [%.1f %unit%]"           <temperature> 
 Number:Temperature      WH2600_WindChill            "Wind Chill [%.1f %unit%]"          <temperature> 
 Number:Temperature      WH2600_HeatIndex            "Heat Index [%.1f %unit%]"          <temperature> 
-Number:Angle            WH2600_WindDirection2       "Wind direction [%.0f %unit%]"      <wind>        
+Number:Angle            WH2600_WindDirection        "Wind direction [%.0f %unit%]"      <wind>        
 Number:Speed            WH2600_WindSpeed            "Wind speed [%.1f %unit%]"          <wind>        
 Number:Speed            WH2600_WindGust             "Wind gust [%.1f %unit%]"           <wind>        
 Number:Length           WH2600_RainH                "Rain H [%.1f mm]"                  <rain>        
