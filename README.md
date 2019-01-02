@@ -83,5 +83,5 @@ String                  WH2600_Action               "Action [%s]"
 Number                  WH2600_RTFreq               "RealTimeFreq [%d]"                               
 String                  WH2600_Station              "Station [%s]"                                    
 String                  WH2600_PWSState             "PWS Update Status [%s]"                          
-String                  WH2600_PWSError             "PWS Update Error  [%s]"                          
+String                  WH2600_PWSError             "PWS Update Error [%s]"                          
 ```
