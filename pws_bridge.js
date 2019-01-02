@@ -25,6 +25,7 @@ app.get(PWSURI, (req, response) => {
       response.send("success");
 
       if ( (loop == 0) ) {
+         // calculate heat index
          if ( (req.query.tempf!=undefined) && (req.query.humidity!=undefined) ) {
             const tempf    = parseFloat(req.query.tempf);
             const humidity = parseFloat(req.query.humidity);
@@ -43,7 +44,8 @@ app.get(PWSURI, (req, response) => {
                var heatindex = undefined;
             }
          }
-
+         
+         // some time zone magic :-|
          var date = new Date(req.query.dateutc + " UTC");
          const timezoneOffset = date.getTimezoneOffset();                                                                     // "-60min"
          date.setMinutes(date.getMinutes()-timezoneOffset);
@@ -52,6 +54,18 @@ app.get(PWSURI, (req, response) => {
          const timeZone = sprintf("%s%02d%02d", (timezoneOffset<=0) ? "+" : "-", timezoneOffsetHours, timezoneOffsetMinutes); // "+0100"
          const localDate = date.toJSON().replace("Z", timeZone);
 
+         // calculdate wind direction
+         if ( req.query.winddir!=undefined ) {
+            const dir = ["N", "NNO", "NO", "ONO", "O", "OSO", "SO", "SSO", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+            const winddiroffset = (parseFloat(req.query.winddir) + (360.0/32.0)) % 360.0;
+            const winddiridx = Math.floor(winddiroffset / (360.0/16.0));
+            var winddir = dir[winddiridx];
+         }
+         else
+         {
+            var winddir = undefined;
+         }
+
          // Unit conversion is done within openHAB using QuantityType
          const WH2600 = [
             ["WH2600_Temperature", req.query.tempf, "°F"],
@@ -59,7 +73,8 @@ app.get(PWSURI, (req, response) => {
             ["WH2600_DewPoint", req.query.dewptf, "°F"],
             ["WH2600_WindChill", req.query.windchillf, "°F"],
             ["WH2600_HeatIndex", heatindex, "°F"],
-            ["WH2600_WindDirection", req.query.winddir],
+            ["WH2600_WindDirection", winddir],
+            ["WH2600_WindDirection2", req.query.winddir, "°"],
             ["WH2600_WindSpeed", req.query.windspeedmph, "mph"],
             ["WH2600_WindGust", req.query.windgustmph, "mph"],
             ["WH2600_RainH", req.query.rainin, "in"],
