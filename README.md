@@ -6,7 +6,7 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
 - openHAB2, v2.4.0.M6
 - Froggit WH2600 SE, Firmware v2.2.5
 
-## Required Packages
+## Required node.js Packages
 - request
 - express
 - normalize-port
