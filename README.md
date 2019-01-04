@@ -12,6 +12,7 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
 - normalize-port
 - sprintf
 
+Example:
 ```
  sudo npm install -g normalize-port --save
  sudo npm link normalize-port
@@ -23,7 +24,7 @@ OpenHAB2 Bridge for Weather Underground (WU) Updater
 - https://rtupdate.wunderground.com
 
 ## Setup as systemctl service
-- Copy it to /lib/systemd/system/
+- Copy pws_bridge.service to /lib/systemd/system/
 - Run systemctl daemon-reload to refresh services
 - Enable the service
 - Start the service
