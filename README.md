@@ -7,7 +7,7 @@ Should work with all weather stations that implement the Weather Underground PWS
 - Renkforce
 - Ambient Weather
 - Froggit
-- Aercus Instruments WeatherSleuth
+- Aercus Instruments WeatherSleuth or WeatherRanger
 - Fine Offset
 
 ## Tested with
