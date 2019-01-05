@@ -1,6 +1,8 @@
 # PWS-Bridge
 OpenHAB2 Bridge for Weather Underground (WU) Updater
 
+![PWS-Bridge](https://github.com/MikeTheTux/PWS-Bridge/blob/master/pws_bridge.png)
+
 Should work with all weather stations that implement the Weather Underground PWS protocol, like
 - Renkforce
 - Ambient Weather
