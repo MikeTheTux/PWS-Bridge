@@ -1,6 +1,13 @@
 # PWS-Bridge
 OpenHAB2 Bridge for Weather Underground (WU) Updater
 
+Should work with all weather stations that implement the Weather Underground PWS protocol, like
+- Renkforce
+- Ambient Weather
+- Froggit
+- Aercus Instruments WeatherSleuth
+- Fine Offset
+
 ## Tested with
 - node.js, v8.13.0
 - openHAB2, v2.4.0.M6
