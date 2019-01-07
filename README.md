@@ -30,7 +30,8 @@ Example:
 ## References
 - https://www.openhab.org/
 - https://www.froggit.de/product_info.php?info=p233_funk-internet-wetterstation-wh2600-se--second-edition-2018--lan-windmessung-regen-wettermast.html
-- https://rtupdate.wunderground.com
+- https://feedback.weather.com/customer/en/portal/articles/2924682-pws-upload-protocol?b_id=17298
+- PWS-Server (w/o parameter): https://rtupdate.wunderground.com/weatherstation/updateweatherstation.php
 
 ## Setup as systemctl service
 - Copy pws_bridge.service to /lib/systemd/system/
