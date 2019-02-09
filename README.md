@@ -39,13 +39,15 @@ Example:
 - Enable the service
 - Start the service
 - Check the service
+- Service logs
 
 ```
-sudo cp pws_bridge.service /lib/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable pws_bridge.service
-sudo systemctl start pws_bridge.service
-sudo systemctl status pws_bridge.service
+sudo cp                            pws_bridge.service /lib/systemd/system/
+sudo systemctl  daemon-reload
+sudo systemctl  enable             pws_bridge.service
+sudo systemctl  start              pws_bridge.service
+sudo systemctl  status             pws_bridge.service
+sudo journalctl -f                 -u pws_bridge.service
 ```
 
 ### Alternative: Start within openHAB2
